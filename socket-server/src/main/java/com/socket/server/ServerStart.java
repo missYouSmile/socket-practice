@@ -1,11 +1,8 @@
 package com.socket.server;
 
-import com.socket.common.Client;
-
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Scanner;
 
 /**
  * socket server starter
@@ -22,6 +19,7 @@ public class ServerStart {
             Socket client = server.accept();
             new OnLineClient(createId(), client).start();
         }
+
     }
 
     private static long createId() {
