@@ -32,6 +32,7 @@ public class ClientStart {
                             String response = dis.readUTF();
                             System.out.println("SERVER : " + response);
                         }
+                        disconnect();
                     } catch (IOException e) {
                         disconnect();
                     }

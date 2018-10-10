@@ -33,6 +33,7 @@ public class OnLineClient extends Client {
                 dos.writeUTF(line);
                 dos.flush();
             }
+            disconnect();
         } catch (IOException e) {
             disconnect();
         }
