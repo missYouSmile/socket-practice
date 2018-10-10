@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.net.Socket;
 import java.util.Objects;
 
+/**
+ * 读,写 应该使用不同线程
+ */
 public abstract class Client extends Thread {
 
     protected DataInputStream dis;
