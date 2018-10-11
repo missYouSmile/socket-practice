@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
+import com.socket.common.ReadAndWriteClient;
+
 /**
  * socket server starter
  */
@@ -17,7 +19,8 @@ public class ServerStart {
 
         while (true) {
             Socket client = server.accept();
-            new OnLineClient(createId(), client).start();
+//            new OnLineClient(createId(), client).start();
+            new Thread(new ReadAndWriteClient(client)).start();
         }
 
     }
