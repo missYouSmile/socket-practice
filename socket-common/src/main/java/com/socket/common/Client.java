@@ -14,7 +14,7 @@ public abstract class Client extends Thread {
     protected DataInputStream dis;
     protected DataOutputStream dos;
     protected boolean isConnected;
-    private Socket socket;
+    protected Socket socket;
 
     public Client(Socket socket) {
         Objects.requireNonNull(socket);
