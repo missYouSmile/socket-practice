@@ -54,9 +54,9 @@ public class NioServer implements Runnable {
                 while (iterator.hasNext()) {
                     SelectionKey key = iterator.next();
                     iterator.remove();
-                    Log.info("ready options is : {}", key.readyOps());
+                    Log.info("ready options is : {} , and is valid is : {}", key.readyOps(), key.isValid());
                     // receive request
-                    if (key.isAcceptable()) {
+                    if (key.isValid() && key.isAcceptable()) {
                         Log.info("接收到客户端请求...");
                         ServerSocketChannel serverChannel = (ServerSocketChannel) key.channel();
                         SocketChannel clientChannel = serverChannel.accept();
@@ -64,7 +64,7 @@ public class NioServer implements Runnable {
                         clientChannel.register(selector, SelectionKey.OP_READ);
                     }
                     // read input
-                    if (key.isReadable()) {
+                    if (key.isValid() && key.isReadable()) {
                         Log.info("读取客户端请求...");
                         SocketChannel channel = (SocketChannel) key.channel();
 
@@ -90,7 +90,7 @@ public class NioServer implements Runnable {
                         }
                     }
                     // reply
-                    if (key.isWritable()) {
+                    if (key.isValid() && key.isWritable()) {
                         Log.info("响应客户端...");
                         SocketChannel channel = (SocketChannel) key.channel();
                         writeBuffer.flip();

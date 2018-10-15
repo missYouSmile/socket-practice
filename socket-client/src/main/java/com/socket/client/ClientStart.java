@@ -27,10 +27,12 @@ public class ClientStart {
                             }
                             dos.writeUTF(line);
                             dos.flush();
+                            socket.shutdownOutput();
 
                             // read
                             String response = dis.readUTF();
                             System.out.println("SERVER : " + response);
+                            socket.shutdownInput();
                         }
                         disconnect();
                     } catch (IOException e) {
